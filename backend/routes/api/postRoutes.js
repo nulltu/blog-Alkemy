@@ -1,22 +1,19 @@
 const router = require('express').Router();
-const {Post} = require('../../config/db');
+const postController = require('../../controllers/postController');
 
+router.route('/')
+  .get(postController.allPosts);
 
-router.get('/', async (req, res) => {
-    const posts = await Post.findAll();
-    res.json(posts)
-})
+router.route('/:postId')
+  .get(postController.postById);
 
-router.post('/', async (req, res) => {
-    const post = await Post.create(req.body);
-    res.json(post)
-})
+router.route('/:postId')
+  .put(postController.putById);
 
-router.put('/:postId', async (req, res) => {
-    await Post.update(req.body, {
-        where: { id: req.params.postId }
-    });
-    res.json({message: 'update ok'})
-})
+router.route('/')
+  .post(postController.createPost);
+
+router.route('/:postId')
+  .delete(postController.deleteById);
 
 module.exports = router;
