@@ -1,4 +1,7 @@
+require('dotenv').config()
+
 module.exports = {
+
     HOST: 'localhost',
     USER: 'root',
     PASSWORD: 'Milanesaq7',
@@ -10,6 +13,4 @@ module.exports = {
         acquire: 30000,
         idle: 10000
     }
-    
-
 }
