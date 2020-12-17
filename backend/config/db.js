@@ -9,10 +9,10 @@ const sequelize = new Sequelize(process.env.DB, process.env.USER, process.env.PA
 
 const Post = PostModel(sequelize, Sequelize);
 
-// sequelize.sync({force: false})
-// .then(()=>{
-//     console.log('create table succefully')
-// })
+// sequelize.sync({ force: false })
+//   .then(() => {
+//     console.log('create table succefully');
+//   });
 
 module.exports = {
   Post,

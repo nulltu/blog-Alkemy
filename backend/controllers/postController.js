@@ -1,3 +1,4 @@
+const { validationResult } = require('express-validator');
 const { Post } = require('../config/db');
 
 const postController = {
@@ -15,6 +16,10 @@ const postController = {
   },
 
   createPost: async (req, res) => {
+    const errors = validationResult(req);
+    if (!errors.isEmpty()) {
+      return res.status(422).json({ errores: errors.array() });
+    }
     const post = await Post.create(req.body);
     res.json(post);
   },

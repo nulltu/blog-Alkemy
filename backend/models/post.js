@@ -4,7 +4,6 @@ module.exports = (sequelize, type) => sequelize.define('post', {
     primaryKey: true,
     autoIncrement: true,
   },
-
   title: {
     type: type.STRING,
   },
