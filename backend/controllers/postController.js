@@ -4,15 +4,36 @@ const { Post } = require('../config/db');
 const postController = {
 
   allPosts: async (req, res) => {
-    const posts = await Post.findAll();
-    res.json(posts);
+    try {
+      const posts = await Post.findAll();
+      res.json(posts);
+    } catch (err) {
+      res.status(400).json({
+        success: false,
+        error: err,
+      });
+    }
   },
 
   postById: async (req, res) => {
-    const post = await Post.findOne({
-      where: { id: req.params.postId },
-    });
-    res.json(post);
+    try {
+      const postExists = await Post.findOne({
+        where: { id: req.params.postId },
+      });
+      if (!postExists) {
+        res.json({ message: 'post not found' });
+      } else {
+        const post = await Post.findOne({
+          where: { id: req.params.postId },
+        });
+        res.json(post);
+      }
+    } catch (err) {
+      res.status(400).json({
+        success: false,
+        error: err,
+      });
+    }
   },
 
   createPost: async (req, res) => {
@@ -25,17 +46,31 @@ const postController = {
   },
 
   putById: async (req, res) => {
-    await Post.update(req.body, {
+    const postExists = await Post.findOne({
       where: { id: req.params.postId },
     });
-    res.json({ message: 'update ok' });
+    if (!postExists) {
+      res.json({ message: 'post not found' });
+    } else {
+      await Post.update(req.body, {
+        where: { id: req.params.postId },
+      });
+      res.json({ message: 'the post was updated correctly' });
+    }
   },
 
   deleteById: async (req, res) => {
-    await Post.destroy({
+    const postExists = await Post.findOne({
       where: { id: req.params.postId },
     });
-    res.json({ message: 'delete ok' });
+    if (!postExists) {
+      res.json({ message: 'post not found' });
+    } else {
+      await Post.destroy({
+        where: { id: req.params.postId },
+      });
+      res.json({ message: 'the post was deleted successfully' });
+    }
   },
 
 };
