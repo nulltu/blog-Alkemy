@@ -1,22 +1,22 @@
 const express = require('express');
 const cors = require('cors');
-const routes = require('./routes/api');
-require('dotenv').config();
+const dotenv = require('dotenv');
+const routes = require('./src/routes/api');
 
-const PORTDEFAULT = 8082;
+const DEFAULTPORT = 8082;
+dotenv.config();
 
 const app = express();
 
-require('./config/db');
+require('./src/config/db');
 
 app.use(cors());
 app.use(express.json());
 
 app.use('/api', routes);
 
-const PORT = process.env.PORTSERVER || PORTDEFAULT;
+const PORT = process.env.PORTSERVER || DEFAULTPORT;
 
 app.listen(PORT, () => {
-  // eslint-disable-next-line no-console
   console.log(`Listening in port ${PORT}`);
 });
