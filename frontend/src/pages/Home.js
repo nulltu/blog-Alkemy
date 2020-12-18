@@ -4,7 +4,7 @@ import ListPosts from '../components/ListPosts'
 function Home() {
     return (
         <div>
-            <ListPosts/>
+           <ListPosts/>
         </div>
     )
 }

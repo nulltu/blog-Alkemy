@@ -10,6 +10,8 @@ import TableContainer from '@material-ui/core/TableContainer';
 import TableHead from '@material-ui/core/TableHead';
 import TableRow from '@material-ui/core/TableRow';
 import Paper from '@material-ui/core/Paper';
+import LinearProgress from '@material-ui/core/LinearProgress';
+import '../styles/listPosts.css'
 
 function ListPosts() {
 
@@ -26,9 +28,9 @@ function ListPosts() {
     }
 
     return (
-        <div>
+        <div className="container__table__posts">
             {posts === undefined
-                ? <div>Loading...</div>
+                ?  <LinearProgress />
                 : <TableContainer component={Paper}>
                     <Table aria-label="simple table">
                         <TableHead>
@@ -52,7 +54,6 @@ function ListPosts() {
                     </Table>
                 </TableContainer>
             }
-
         </div>
     )
 }

@@ -1,0 +1,7 @@
+.container__table__posts{
+    margin: 2vw 20vw;
+}
+
+.MuiTableCell-root.MuiTableCell-head{
+    font-weight: bold;
+}

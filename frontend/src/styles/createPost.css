@@ -1,0 +1,10 @@
+.form__create__post{
+    display:flex;
+    flex-direction:column;
+    margin: 2vw 20vw;
+}
+
+.form__create__post div:nth-child(4){
+    text-align:center;
+    margin-top: 2rem;
+}

@@ -1,9 +1,11 @@
+  
 import React from 'react';
 import TableCell from '@material-ui/core/TableCell';
 import TableRow from '@material-ui/core/TableRow';
 import { Link } from 'react-router-dom'
 
 function Post(props) {
+    console.log()
     return (
         <>
             <TableRow key={props.post.id}>
