@@ -1,5 +1,6 @@
 const { validationResult } = require('express-validator');
 const { Post } = require('../config/db');
+const boom = require('@hapi/boom')
 
 const postController = {
 
