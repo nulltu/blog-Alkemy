@@ -7,9 +7,8 @@ function NavBar() {
         <div>
             <nav>
             <Link to="/">Home</Link>
-            <Link to="/editPost">New Post</Link>
+            <Link to="/newPost">New Post</Link>
             </nav>
-  
         </div>
     )
 }

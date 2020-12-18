@@ -81,6 +81,7 @@ const postController = {
         await Post.destroy({
           where: { id: req.params.postId },
         });
+       
         res.json({ message: 'the post was deleted successfully' });
       }
     } catch (err) {
