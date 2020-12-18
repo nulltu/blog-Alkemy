@@ -1,6 +1,7 @@
 const { Router } = require('express');
-const postController = require('../controllers/postController');
+const asyncMiddleware = require('../middlewares/asyncMiddleware')
 const postValidator = require('../validators/postValidator');
+const postController = require('../controllers/postController');
 
 const router = Router();
 

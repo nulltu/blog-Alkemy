@@ -9,10 +9,7 @@ const postController = {
       const posts = await Post.findAll();
       res.json(posts);
     } catch (err) {
-      res.status(400).json({
-        success: false,
-        error: err,
-      });
+      res.send(boom.badRequest(err))
     }
   },
 
@@ -27,10 +24,7 @@ const postController = {
         res.json(postExists);
       }
     } catch (err) {
-      res.status(500).json({
-        success: false,
-        err
-      });
+      res.send(boom.badRequest(err))
     }
   },
 
@@ -43,10 +37,8 @@ const postController = {
       const post = await Post.create(req.body);
       res.json(post);
     } catch (err) {
-      res.status(500).json({
-        success: false,
-        err
-      })
+      res.send(boom.badRequest(err),
+      )
     }
   },
 
@@ -64,10 +56,7 @@ const postController = {
         res.json({ message: 'the post was updated correctly' });
       }
     } catch (err) {
-      res.status(500).json({
-        success: false,
-        err
-      })
+      res.send(boom.badRequest(err))
     }
   },
 
@@ -82,14 +71,11 @@ const postController = {
         await Post.destroy({
           where: { id: req.params.postId },
         });
-       
+
         res.json({ message: 'the post was deleted successfully' });
       }
     } catch (err) {
-      res.status(500).json({
-        success: false,
-        err
-      })
+      res.send(boom.badRequest(err))
     }
   },
 
