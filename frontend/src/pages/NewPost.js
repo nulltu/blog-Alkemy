@@ -1,10 +1,11 @@
 import React from 'react'
-import CreatePost from '../components/CreatePost'
+import FormNewPost from '../components/FormNewPost'
+import '../styles/createPost.css'
 
 function NewPost() {
     return (
         <div>
-            <CreatePost/>
+            <FormNewPost/>
         </div>
     )
 }

@@ -8,3 +8,29 @@
     text-align:center;
     margin-top: 2rem;
 }
+
+textarea {
+    height: 10vh;
+	display: block;
+	width: 100%;
+    border: 1px solid rgb(187, 187, 187);
+    border-radius: 5px;
+    padding: 10px 5px;
+    resize: none;
+    background: whitesmoke no-repeat;
+	background-image: linear-gradient(to bottom, #F5B427, #F5B427), linear-gradient(to bottom, #F5B427, #F5B427);
+	background-size: 0 2px, 100% 1px;
+    background-position: 50% 100%, 50% 100%;
+    transition: background-size 0.3s cubic-bezier(0.64, 0.09, 0.08, 1);
+
+}
+
+textarea:focus{
+  /* sizes for the 2 images (focus state) */
+	background-size: 100% 2px, 100% 1px;
+	outline: none;
+}
+
+#button__publish:hover{
+    background-color: black;
+}
