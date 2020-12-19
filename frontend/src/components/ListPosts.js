@@ -30,7 +30,7 @@ function ListPosts() {
     return (
         <div className="container__table__posts">
             {posts === undefined
-                ?  <LinearProgress />
+                ?  <LinearProgress style={{color: 'secondary'}}/>
                 : <TableContainer component={Paper}>
                     <Table aria-label="simple table">
                         <TableHead>

@@ -4,4 +4,23 @@
 
 .MuiTableCell-root.MuiTableCell-head{
     font-weight: bold;
+    text-align:center;
 }
+
+.MuiTable-root{
+    background-color: rgba(245, 180, 39, 0.8);
+}
+
+.links__crud{
+    display: flex!important;
+}
+
+.links__crud img{
+    width: 1.5rem;
+    margin: 0rem 0rem 0rem 0.5rem;
+}
+
+.MuiTableCell-root.MuiTableCell-body{
+    text-align: center;
+}
+

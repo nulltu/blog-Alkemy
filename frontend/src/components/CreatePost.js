@@ -23,13 +23,24 @@ function CreatePost() {
         e.preventDefault();
         const response = await axios.post('https://jsonplaceholder.typicode.com/posts', dataPost)
         console.log(response)
+        if(response.status === 201){
+            alert('User successfully created')
+            setDataPost({
+                username: '',
+                title: '', 
+                body: ''
+            })
+        }
     }
 
     return (
         <div className="form__create__post">
-            <TextField id="standard-basic" label="Username" name="username" onChange={readInput} />
-            <TextField id="standard-basic" label="Title" name="title" onChange={readInput} />
-            <TextField id="standard-basic" label="Body" name="body" onChange={readInput} />
+            <TextField id="standard-basic" label="Username"
+                name="username" onChange={readInput} value={dataPost.username}/>
+            <TextField id="standard-basic" label="Title"
+                name="title" onChange={readInput} value={dataPost.title}/>
+            <TextField id="standard-basic" label="Body"
+                name="body" onChange={readInput} value={dataPost.body}/>
             <div><Button onClick={sendData}>Send</Button></div>
         </div>
     );
