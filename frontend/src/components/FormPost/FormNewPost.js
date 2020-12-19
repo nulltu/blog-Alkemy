@@ -5,14 +5,13 @@ import Grid from '@material-ui/core/Grid';
 import Typography from '@material-ui/core/Typography';
 import { makeStyles } from '@material-ui/core/styles';
 import Container from '@material-ui/core/Container';
+import Swal from 'sweetalert2'
 
 import React, { useState } from 'react';
 import axios from 'axios'
 import './formNewPost.css'
 
-
-
-export default function SignUp() {
+export default function FormNewPost() {
 
   const [dataPost, setDataPost] = useState({
     username: '', title: '', body: ''
@@ -30,9 +29,10 @@ const readInput = e => {
 const sendData = async (e) => {
     e.preventDefault();
     const response = await axios.post('https://jsonplaceholder.typicode.com/posts', dataPost)
-    console.log(response)
     if(response.status === 201){
-        alert('User successfully created')
+      Swal.fire(
+        'Post created successfully!'
+      )
         setDataPost({
             username: '',
             title: '', 
@@ -111,7 +111,7 @@ const useStyles = makeStyles((theme) => ({
   },
   submit: {
     margin: theme.spacing(3, 0, 2),
-    backgroundColor:'#F5B427'
+    backgroundColor:'#f5b630'
   },
   input:{
     color:'red'

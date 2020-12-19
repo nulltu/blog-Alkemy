@@ -84,7 +84,8 @@ const useStyles = makeStyles((theme) => ({
     },
     button: {
         color: 'white',
-        backgroundColor: '#302929',
+        backgroundColor: '#3f51b5',
+        margin:'0rem 1rem',
         textTransform:'lowercase',
         }
 }));

@@ -26,7 +26,8 @@ export default function FormEditPost(props) {
         const dataPostById = response.data
         setPostGetById({
             title: dataPostById.title,
-            body: dataPostById.body
+            body: dataPostById.body,
+            id: dataPostById.id
          })
     }
 
@@ -62,7 +63,7 @@ export default function FormEditPost(props) {
             <CssBaseline />
             <div className={classes.paper}>
                 <Typography component="h1" variant="h5">
-                    Create New Post
+                    Edit Post #{postGetById.id}
         </Typography>
                 <form className={classes.form} noValidate>
                     <Grid container spacing={2}>

@@ -5,7 +5,6 @@ import NavBar from '../navBar/NavBar'
 import EditPost from '../../pages/EditPost'
 import './app.css'
 
-
 function App() {
   return (
     <>
