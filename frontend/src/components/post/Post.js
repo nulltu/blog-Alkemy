@@ -1,14 +1,16 @@
   
-import React from 'react';
 import TableCell from '@material-ui/core/TableCell';
 import TableRow from '@material-ui/core/TableRow';
-import { Link } from 'react-router-dom'
-import Modal from '../components/Modal'
-import axios from 'axios'
+import edit from '../../assets/icons/pencil.svg';
+import remove from '../../assets/icons/delete.svg';
 
-import edit from '../assets/icons/pencil.svg';
-import remove from '../assets/icons/delete.svg'
-import '../styles/listPosts.css'
+import React from 'react';
+import { Link } from 'react-router-dom'
+import Modal from '../Modal/Modal'
+import axios from 'axios'
+import './post.css'
+
+
 
 function Post(props) {
 

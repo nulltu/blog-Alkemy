@@ -1,5 +1,5 @@
 import React from 'react'
-import ListPosts from '../components/ListPosts'
+import ListPosts from '../components/listPosts/ListPosts'
 
 function Home() {
     return (

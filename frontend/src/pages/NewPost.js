@@ -1,6 +1,6 @@
 import React from 'react'
-import FormNewPost from '../components/FormNewPost'
-import '../styles/createPost.css'
+import FormNewPost from '../components/FormPost/FormNewPost'
+
 
 function NewPost() {
     return (

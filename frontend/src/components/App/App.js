@@ -1,8 +1,9 @@
 import { BrowserRouter, Switch, Route, Redirect } from 'react-router-dom'
-import Home from '../src/pages/Home'
-import NewPost from '../src/pages/NewPost'
-import NavBar from '../src/components/NavBar'
-import EditPost from '../src/pages/EditPost'
+import Home from '../../pages/Home'
+import NewPost from '../../pages/NewPost'
+import NavBar from '../navBar/NavBar'
+import EditPost from '../../pages/EditPost'
+import './app.css'
 
 
 function App() {

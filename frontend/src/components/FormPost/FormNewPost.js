@@ -8,7 +8,8 @@ import Container from '@material-ui/core/Container';
 
 import React, { useState } from 'react';
 import axios from 'axios'
-import '../styles/createPost.css'
+import './formNewPost.css'
+
 
 
 export default function SignUp() {

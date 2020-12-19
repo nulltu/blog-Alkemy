@@ -10,8 +10,8 @@ import LinearProgress from '@material-ui/core/LinearProgress';
 import React from 'react'
 import { useEffect, useState } from 'react'
 import axios from 'axios'
-import Post from '../components/Post'
-import '../styles/listPosts.css'
+import Post from '../post/Post'
+
 
 function ListPosts() {
 

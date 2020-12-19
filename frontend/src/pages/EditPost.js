@@ -1,9 +1,11 @@
 import React from 'react'
+import FormEditPost from '../components/formEditPost/formEditPost'
 
-function EditPost() {
+function EditPost(props) {
+    
     return (
         <div>
-            edit post here
+           <FormEditPost paramsId = {props.match.params.id}/>
         </div>
     )
 }

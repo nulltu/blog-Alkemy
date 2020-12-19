@@ -2,15 +2,6 @@
     margin: 2vw 20vw;
 }
 
-.MuiTableCell-root.MuiTableCell-head{
-    font-weight: bold;
-    text-align:center;
-}
-
-.MuiTable-root{
-    background-color: rgba(245, 180, 39, 0.8);
-}
-
 .links__crud{
     display: flex!important;
 }
@@ -20,7 +11,16 @@
     margin: 0rem 0rem 0rem 0.5rem;
 }
 
+.MuiTableCell-root.MuiTableCell-head{
+    font-weight: bold;
+    text-align:center;
+}
+
+.MuiTable-root{
+    background-color: rgba(245, 180, 39, 0.8);
+}
+
+
 .MuiTableCell-root.MuiTableCell-body{
     text-align: center;
 }
-
