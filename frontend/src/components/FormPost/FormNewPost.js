@@ -27,10 +27,8 @@ export default function FormNewPost(props) {
     })
   }
 
-
   const postNewPost = async () => {
     const response = await axios.post(URLAPI, dataPost)
-    console.log(response)
     if (response.status === CREATED) {
       Swal.fire(
         'Post created successfully!'
@@ -43,7 +41,6 @@ export default function FormNewPost(props) {
     }
   }
 
-  console.log(props)
   const createNewPost = (e) => {
     e.preventDefault();
     if (dataPost.title === "" || dataPost.body === "") {

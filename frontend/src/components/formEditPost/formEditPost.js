@@ -64,8 +64,6 @@ export default function FormEditPost(props) {
         }
     }
 
-    console.log(paramsId)
-
     const classes = useStyles();
     return (
         <Container component="main" maxWidth="xs">
