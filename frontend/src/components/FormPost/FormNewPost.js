@@ -8,38 +8,51 @@ import Container from '@material-ui/core/Container';
 import Swal from 'sweetalert2'
 
 import React, { useState } from 'react';
+import { CREATED, URLAPI } from '../../constants'
 import axios from 'axios'
 import './formNewPost.css'
 
-export default function FormNewPost() {
+export default function FormNewPost(props) {
 
   const [dataPost, setDataPost] = useState({
     username: '', title: '', body: ''
-})
+  })
 
-const readInput = e => {
+  const readInput = e => {
     const textBox = e.target.name
     const value = e.target.value
     setDataPost({
-        ...dataPost,
-        [textBox]: value
+      ...dataPost,
+      [textBox]: value
     })
-}
+  }
 
-const sendData = async (e) => {
-    e.preventDefault();
-    const response = await axios.post('https://jsonplaceholder.typicode.com/posts', dataPost)
-    if(response.status === 201){
+
+  const postNewPost = async () => {
+    const response = await axios.post(URLAPI, dataPost)
+    console.log(response)
+    if (response.status === CREATED) {
       Swal.fire(
         'Post created successfully!'
       )
-        setDataPost({
-            username: '',
-            title: '', 
-            body: ''
-        })
+      setDataPost({
+        username: '',
+        title: '',
+        body: ''
+      })
     }
-}
+  }
+
+  console.log(props)
+  const createNewPost = (e) => {
+    e.preventDefault();
+    if (dataPost.title === "" || dataPost.body === "") {
+      Swal.fire('The input field cannot be empty.')
+    } else {
+      postNewPost()
+    }
+
+  }
 
   const classes = useStyles();
   return (
@@ -53,9 +66,9 @@ const sendData = async (e) => {
           <Grid container spacing={2}>
             <Grid item xs={12} sm={12}>
               <TextField
-               multiline
-               name="title"
-               onChange={readInput} 
+                multiline
+                name="title"
+                onChange={readInput}
                 autoComplete="fname"
                 variant="outlined"
                 required
@@ -69,22 +82,22 @@ const sendData = async (e) => {
             </Grid>
 
             <Grid item xs={12}>
-              <textarea 
-              name="body"
-              placeholder="Post"
-              onChange={readInput} 
-              value={dataPost.body}
+              <textarea
+                name="body"
+                placeholder="Post"
+                onChange={readInput}
+                value={dataPost.body}
               ></textarea>
             </Grid>
           </Grid>
           <Button
-            id= "button__publish"
+            id="button__publish"
             type="submit"
             fullWidth
             variant="contained"
             color="primary"
             className={classes.submit}
-            onClick={sendData}
+            onClick={createNewPost}
           >
             Publish
           </Button>
@@ -106,14 +119,14 @@ const useStyles = makeStyles((theme) => ({
     backgroundColor: theme.palette.secondary.main,
   },
   form: {
-    width: '100%', 
+    width: '100%',
     marginTop: theme.spacing(3),
   },
   submit: {
     margin: theme.spacing(3, 0, 2),
-    backgroundColor:'#f5b630'
+    backgroundColor: '#f5b630'
   },
-  input:{
-    color:'red'
-}
+  input: {
+    color: 'red'
+  }
 }));

@@ -1,9 +1,12 @@
-import React from 'react';
 import { makeStyles } from '@material-ui/core/styles';
 import Modal from '@material-ui/core/Modal';
 import Backdrop from '@material-ui/core/Backdrop';
 import Button from '@material-ui/core/Button';
 import Fade from '@material-ui/core/Fade';
+import CircularProgress from '@material-ui/core/CircularProgress';
+
+import React from 'react';
+import { URLAPI } from '../../constants'
 import { useEffect, useState } from 'react'
 import axios from 'axios'
 
@@ -28,7 +31,7 @@ export default function TransitionsModal(props) {
     }, [])
 
     const getPostId = async () => {
-        const response = await axios.get(`https://jsonplaceholder.typicode.com/posts/${id}`)
+        const response = await axios.get(`${URLAPI}${id}`)
         const dataPost = await response.data
         setPostId(dataPost)
     }
@@ -36,7 +39,7 @@ export default function TransitionsModal(props) {
     return (
         <>
             {postId === undefined
-                ? null
+                ?   <CircularProgress />
                 :
                 <div>
                     <Button type="button" onClick={handleOpen} className={classes.button}>
@@ -74,7 +77,7 @@ const useStyles = makeStyles((theme) => ({
         alignItems: 'center',
         justifyContent: 'center',
         textAlign: 'center',
-        margin: '20vw 40vw',
+        margin: '25vw'
     },
     paper: {
         backgroundColor: '#F5B427',
@@ -88,4 +91,5 @@ const useStyles = makeStyles((theme) => ({
         margin:'0rem 1rem',
         textTransform:'lowercase',
         }
+
 }));

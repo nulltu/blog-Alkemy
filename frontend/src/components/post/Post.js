@@ -5,6 +5,7 @@ import edit from '../../assets/icons/pencil.svg';
 import remove from '../../assets/icons/delete.svg';
 
 import React from 'react';
+import { URLAPI } from '../../constants'
 import { Link } from 'react-router-dom'
 import Modal from '../Modal/Modal'
 import axios from 'axios'
@@ -14,7 +15,7 @@ import Swal from 'sweetalert2'
 function Post(props) {
 
     const deletePost = async () => {
-        await axios.delete(`https://jsonplaceholder.typicode.com/posts/${props.post.id}`)
+        await axios.delete(`${URLAPI}+${props.post.id}`)
     }
 
     const removePost = async () => {

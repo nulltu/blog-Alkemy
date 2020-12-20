@@ -1,11 +1,10 @@
 import React from 'react'
 import FormNewPost from '../components/FormPost/FormNewPost'
 
-
-function NewPost() {
+function NewPost(props) {
     return (
         <div>
-            <FormNewPost/>
+            <FormNewPost props={props}/>
         </div>
     )
 }

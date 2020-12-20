@@ -5,8 +5,10 @@ import Grid from '@material-ui/core/Grid';
 import Typography from '@material-ui/core/Typography';
 import { makeStyles } from '@material-ui/core/styles';
 import Container from '@material-ui/core/Container';
+import Swal from 'sweetalert2'
 
 import React, { useState, useEffect } from 'react';
+import { RESOK, URLAPI } from '../../constants'
 import axios from 'axios'
 import './formEditPost.css'
 
@@ -16,46 +18,53 @@ export default function FormEditPost(props) {
         title: '', body: ''
     })
 
-    const paramsId = props.paramsId
+    const paramsId = props.props.match.params.id
+
     useEffect(() => {
-        getPost()
+        getPostById()
     }, [])
 
-    const getPost = async () => {
-        const response = await axios.get(`https://jsonplaceholder.typicode.com/posts/${paramsId}`)
+    const readInput = e => {
+        const textBox = e.target.name
+        const value = e.target.value
+        setPostGetById({
+            ...setPostGetById,
+            [textBox]: value
+        })
+    }
+
+    const getPostById = async () => {
+        const response = await axios.get(`${URLAPI}${paramsId}`);
         const dataPostById = response.data
         setPostGetById({
             title: dataPostById.title,
             body: dataPostById.body,
             id: dataPostById.id
-         })
+        })
     }
 
+    const updatePost = async () => {
+        const response = await axios.put(URLAPI + paramsId, postGetById)
+        if (response.status === RESOK) {
+            Swal.fire(
+                'Post edited successfully!'
+            )
+            setTimeout(() => {
+                props.props.history.push('/newOperation')
+            }, 1000)
+        }
+    }
 
-    // const [posts, setPosts] = useState()
+    const editPost = (e) => {
+        e.preventDefault()
+        if (postGetById.title === "" || postGetById.body === "") {
+            Swal.fire('The input field cannot be empty.')
+        } else {
+            updatePost()
+        }
+    }
 
-    // const readInput = e => {
-    //     const textBox = e.target.name
-    //     const value = e.target.value
-    //     setDataPost({
-    //         ...dataPost,
-    //         [textBox]: value
-    //     })
-    // }
-
-    // const sendData = async (e) => {
-    //     e.preventDefault();
-    //     const response = await axios.post('https://jsonplaceholder.typicode.com/posts', dataPost)
-    //     console.log(response)
-    //     if(response.status === 201){
-    //         alert('User successfully created')
-    //         setDataPost({
-    //             username: '',
-    //             title: '', 
-    //             body: ''
-    //         })
-    //     }
-    // }
+    console.log(paramsId)
 
     const classes = useStyles();
     return (
@@ -64,10 +73,11 @@ export default function FormEditPost(props) {
             <div className={classes.paper}>
                 <Typography component="h1" variant="h5">
                     Edit Post #{postGetById.id}
-        </Typography>
+                </Typography>
                 <form className={classes.form} noValidate>
                     <Grid container spacing={2}>
                         <Grid item xs={12} sm={12}>
+                            <label className={classes.title}>Title</label>
                             <TextField
                                 multiline
                                 name="title"
@@ -75,10 +85,10 @@ export default function FormEditPost(props) {
                                 variant="outlined"
                                 required
                                 fullWidth
-                                label="Title"
                                 autoFocus
                                 className={classes.input}
-                                value={postGetById.title}
+                                value={(postGetById.title)}
+                                onChange={readInput}
                             />
                         </Grid>
 
@@ -86,8 +96,8 @@ export default function FormEditPost(props) {
                             <textarea
                                 name="body"
                                 placeholder="Post"
-                            //   onChange={readInput} 
-                              value={postGetById.body}
+                                onChange={readInput}
+                                value={postGetById.body}
                             ></textarea>
                         </Grid>
                     </Grid>
@@ -98,9 +108,9 @@ export default function FormEditPost(props) {
                         variant="contained"
                         color="primary"
                         className={classes.submit}
-                    // onClick={sendData}
+                        onClick={editPost}
                     >
-                        Publish
+                        Confirm
           </Button>
                 </form>
             </div>
@@ -129,5 +139,8 @@ const useStyles = makeStyles((theme) => ({
     },
     input: {
         color: 'red'
+    },
+    title: {
+        fontSize: '1.2rem',
     }
 }));

@@ -8,6 +8,7 @@ import Paper from '@material-ui/core/Paper';
 import LinearProgress from '@material-ui/core/LinearProgress';
 
 import React from 'react'
+import { URLAPI } from '../../constants'
 import { useEffect, useState } from 'react'
 import axios from 'axios'
 import Post from '../post/Post'
@@ -22,7 +23,7 @@ function ListPosts() {
     }, [])
 
     const getPosts = async () => {
-        const response = await axios.get('https://jsonplaceholder.typicode.com/posts')
+        const response = await axios.get(URLAPI)
         const dataPosts = await response.data
         setPosts(dataPosts)
     }

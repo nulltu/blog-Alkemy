@@ -29,3 +29,21 @@ nav{
 nav img{
     width: 70%;
 }
+
+@media only screen and (max-width: 992px) {
+
+ nav{
+     padding: .5rem;
+    }
+  
+.link__nav{
+    margin: .5rem;
+    font-size: 1rem;
+}
+
+nav img{
+    width: 40%;
+}
+
+    
+}
