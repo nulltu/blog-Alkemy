@@ -1,17 +1,18 @@
 const { Router } = require('express');
 const asyncMiddleware = require('../middlewares/asyncMiddleware')
 const postValidator = require('../validators/postValidator');
-const postController = require('../controllers/postController');
+const { allPosts, createPost, deleteAll, postById, deleteById, putById
+} = require('../controllers/postController')
 
 const router = Router();
 
 router.route('/posts')
-  .get(postController.allPosts)
-  .post(postValidator, postController.createPost);
+  .get(allPosts)
+  .post(postValidator, createPost);
 
 router.route('/posts/:postId')
-  .get(postController.postById)
-  .delete(postController.deleteById)
-  .put(postController.putById);
+  .get(postById)
+  .delete(deleteById)
+  .put(putById);
 
 module.exports = router;

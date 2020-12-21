@@ -7,9 +7,13 @@ const postController = {
   allPosts: async (req, res) => {
     try {
       const posts = await Post.findAll();
-      res.json(posts);
+      if(posts.length < 1){
+        res.json({message: "No post available"})
+      }else{
+        res.json(posts);
+      }
     } catch (err) {
-      res.send(boom.badRequest(err))
+      res.send(boom.internal(err))
     }
   },
 
@@ -24,7 +28,7 @@ const postController = {
         res.json(postExists);
       }
     } catch (err) {
-      res.send(boom.badRequest(err))
+      res.send(boom.internal(err))
     }
   },
 
@@ -75,9 +79,9 @@ const postController = {
         res.json({ message: 'the post was deleted successfully' });
       }
     } catch (err) {
-      res.send(boom.badRequest(err))
+      res.send(boom.internal(err))
     }
-  },
+  }
 
 };
 
