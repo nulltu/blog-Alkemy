@@ -40,6 +40,8 @@ function TransitionsModal(props) {
     });
   };
 
+  console.log(props);
+
   return (
     <>
       <TableRow key={props.post.id}>

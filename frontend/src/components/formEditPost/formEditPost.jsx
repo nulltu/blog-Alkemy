@@ -1,6 +1,4 @@
-/* eslint-disable react/prop-types */
 /* eslint-disable jsx-a11y/label-has-associated-control */
-/* eslint-disable no-use-before-define */
 import Button from '@material-ui/core/Button';
 import CssBaseline from '@material-ui/core/CssBaseline';
 import TextField from '@material-ui/core/TextField';
@@ -14,6 +12,33 @@ import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import { RESOK, URLAPI } from '../../constants/constants';
 import './formEditPost.css';
+
+const useStyles = makeStyles((theme) => ({
+  paper: {
+    marginTop: theme.spacing(8),
+    display: 'flex',
+    flexDirection: 'column',
+    alignItems: 'center',
+  },
+  avatar: {
+    margin: theme.spacing(1),
+    backgroundColor: theme.palette.secondary.main,
+  },
+  form: {
+    width: '100%',
+    marginTop: theme.spacing(3),
+  },
+  submit: {
+    margin: theme.spacing(3, 0, 2),
+    backgroundColor: '#F5B427',
+  },
+  input: {
+    color: 'red',
+  },
+  title: {
+    fontSize: '1.2rem',
+  },
+}));
 
 export default function FormEditPost(props) {
   const [postGetById, setPostGetById] = useState({
@@ -121,30 +146,3 @@ export default function FormEditPost(props) {
     </Container>
   );
 }
-
-const useStyles = makeStyles((theme) => ({
-  paper: {
-    marginTop: theme.spacing(8),
-    display: 'flex',
-    flexDirection: 'column',
-    alignItems: 'center',
-  },
-  avatar: {
-    margin: theme.spacing(1),
-    backgroundColor: theme.palette.secondary.main,
-  },
-  form: {
-    width: '100%',
-    marginTop: theme.spacing(3),
-  },
-  submit: {
-    margin: theme.spacing(3, 0, 2),
-    backgroundColor: '#F5B427',
-  },
-  input: {
-    color: 'red',
-  },
-  title: {
-    fontSize: '1.2rem',
-  },
-}));

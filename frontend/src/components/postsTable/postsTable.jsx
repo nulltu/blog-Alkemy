@@ -10,20 +10,15 @@ import LinearProgress from '@material-ui/core/LinearProgress';
 import React, { useEffect, useState } from 'react';
 import axios from 'axios';
 import Post from '../post/Post';
-// import { Link } from 'react-router-dom';
 import { URLAPI } from '../../constants/constants';
 
 function PostsTable() {
   const [posts, setPosts] = useState();
 
-  const getPosts = async () => {
+  useEffect(async () => {
     const response = await axios.get(URLAPI);
-    const dataPosts = await response.data;
-    setPosts(dataPosts);
-  };
-
-  useEffect(() => {
-    getPosts();
+    const dataPost = response.data;
+    setPosts(dataPost);
   }, []);
 
   return (

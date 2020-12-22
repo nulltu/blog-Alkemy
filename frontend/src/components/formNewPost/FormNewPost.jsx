@@ -1,3 +1,5 @@
+/* eslint-disable no-plusplus */
+/* eslint-disable no-restricted-globals */
 import Button from '@material-ui/core/Button';
 import CssBaseline from '@material-ui/core/CssBaseline';
 import TextField from '@material-ui/core/TextField';
@@ -7,14 +9,14 @@ import { makeStyles } from '@material-ui/core/styles';
 import Container from '@material-ui/core/Container';
 import Swal from 'sweetalert2';
 
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import axios from 'axios';
-import { CREATED, URLAPI } from '../../constants/constants';
+import { URLAPI, RESOK, CREATED } from '../../constants/constants';
 import './formNewPost.css';
 
 export default function FormNewPost() {
   const [dataPost, setDataPost] = useState({
-    username: '', title: '', body: '',
+    title: '', body: '',
   });
 
   const readInput = (e) => {
@@ -28,17 +30,26 @@ export default function FormNewPost() {
 
   const postNewPost = async () => {
     const response = await axios.post(URLAPI, dataPost);
-    if (response.status === CREATED) {
+    if (response.status === RESOK || response.status === CREATED) {
       Swal.fire(
         'Post created successfully!',
       );
       setDataPost({
-        username: '',
         title: '',
         body: '',
       });
     }
   };
+
+  const getRandomUser = async () => {
+    const response = await axios.get('https://randomuser.me/api/');
+    const randomUser = response.data;
+    console.log(randomUser.results[0].name.first);
+  };
+
+  useEffect(async () => {
+    getRandomUser();
+  }, []);
 
   const createNewPost = (e) => {
     e.preventDefault();
