@@ -1,5 +1,3 @@
-/* eslint-disable no-plusplus */
-/* eslint-disable no-restricted-globals */
 import Button from '@material-ui/core/Button';
 import CssBaseline from '@material-ui/core/CssBaseline';
 import TextField from '@material-ui/core/TextField';
@@ -10,13 +8,14 @@ import Container from '@material-ui/core/Container';
 import Swal from 'sweetalert2';
 
 import React, { useState, useEffect } from 'react';
-import axios from 'axios';
-import { URLAPI, RESOK, CREATED } from '../../constants/constants';
+import { connect } from 'react-redux';
+import { RESOK, CREATED } from '../../constants/constants';
 import './formNewPost.css';
+import postsActions from '../../redux/actions/postsActions';
 
-export default function FormNewPost() {
+const FormNewPost = (props) => {
   const [dataPost, setDataPost] = useState({
-    title: '', body: '',
+    title: '', body: '', userId: '',
   });
 
   const readInput = (e) => {
@@ -29,7 +28,7 @@ export default function FormNewPost() {
   };
 
   const postNewPost = async () => {
-    const response = await axios.post(URLAPI, dataPost);
+    const response = await props.createPost(dataPost);
     if (response.status === RESOK || response.status === CREATED) {
       Swal.fire(
         'Post created successfully!',
@@ -37,14 +36,16 @@ export default function FormNewPost() {
       setDataPost({
         title: '',
         body: '',
+        userId: '',
       });
     }
   };
 
   const getRandomUser = async () => {
-    const response = await axios.get('https://randomuser.me/api/');
-    const randomUser = response.data;
-    console.log(randomUser.results[0].name.first);
+    const randomUser = await props.randomUser();
+    setDataPost({
+      userId: randomUser,
+    });
   };
 
   useEffect(async () => {
@@ -112,7 +113,14 @@ export default function FormNewPost() {
       </div>
     </Container>
   );
-}
+};
+
+const mapDispatchToProps = {
+  createPost: postsActions.createPost,
+  randomUser: postsActions.randomUser,
+};
+
+export default connect(null, mapDispatchToProps)(FormNewPost);
 
 const useStyles = makeStyles((theme) => ({
   paper: {

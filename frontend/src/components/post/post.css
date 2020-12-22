@@ -13,7 +13,6 @@
 
 .MuiTableCell-root.MuiTableCell-head{
     font-weight: bold;
-    text-align:center;
     font-size: 1.2rem;
 }
 
@@ -43,7 +42,6 @@
     .links__crud img{
         margin: .5rem;
     }
-
 }
 
 @media only screen and (max-width: 600px) {

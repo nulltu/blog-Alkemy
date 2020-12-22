@@ -8,6 +8,7 @@ import CircularProgress from '@material-ui/core/CircularProgress';
 import React, { useEffect, useState } from 'react';
 import axios from 'axios';
 import { URLAPI } from '../../constants/constants';
+import './modal.css';
 
 const useStyles = makeStyles((theme) => ({
   modal: {
@@ -15,13 +16,13 @@ const useStyles = makeStyles((theme) => ({
     alignItems: 'center',
     justifyContent: 'center',
     textAlign: 'center',
-    margin: '25vw',
   },
   paper: {
     backgroundColor: '#F5B427',
     border: '5px solid #000',
     boxShadow: theme.shadows[5],
     padding: theme.spacing(2, 2, 3),
+    fontSize: 'calc(.6em + .6vw)',
   },
   button: {
     color: 'white',

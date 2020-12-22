@@ -7,10 +7,10 @@ module.exports = (sequelize, type) => sequelize.define('post', {
   title: {
     type: type.STRING,
   },
-  content: {
+  body: {
     type: type.STRING,
   },
-  image: {
+  userId: {
     type: type.STRING,
   },
   category: {

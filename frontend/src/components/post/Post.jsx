@@ -1,24 +1,27 @@
-/* eslint-disable jsx-a11y/anchor-is-valid */
 /* eslint-disable jsx-a11y/no-noninteractive-element-interactions */
-/* eslint-disable react/prop-types */
+/* eslint-disable jsx-a11y/anchor-is-valid */
 /* eslint-disable react/destructuring-assignment */
 import TableCell from '@material-ui/core/TableCell';
 import TableRow from '@material-ui/core/TableRow';
 import React from 'react';
-import axios from 'axios';
 import Swal from 'sweetalert2';
 import { Link } from 'react-router-dom';
+import { connect } from 'react-redux';
 import edit from '../../assets/icons/pencil.svg';
 import remove from '../../assets/icons/delete.svg';
+import { RESOK } from '../../constants/constants';
 import Modal from '../modal/Modal';
 import './post.css';
-
-import { URLAPI } from '../../constants/constants';
+import postsActions from '../../redux/actions/postsActions';
 
 function TransitionsModal(props) {
   const deletePost = async () => {
-    await axios.delete(`${URLAPI}+${props.post.id}`);
+    const response = await props.deletePost(props.post.id);
+    if (response.status === RESOK) {
+      props.allPosts();
+    }
   };
+
   const removePost = async () => {
     Swal.fire({
       title: 'Are you sure?',
@@ -40,8 +43,6 @@ function TransitionsModal(props) {
     });
   };
 
-  console.log(props);
-
   return (
     <>
       <TableRow key={props.post.id}>
@@ -54,11 +55,16 @@ function TransitionsModal(props) {
         <TableCell className="links__crud">
           <Modal idPost={props.post.id} />
           <Link to={`/editPost/${props.post.id}`}><img src={edit} alt="" /></Link>
-          <img src={remove} onClick={removePost} onKeyDown={removePost} alt="" />
+          <Link><img src={remove} onClick={removePost} onKeyDown={removePost} alt="" /></Link>
         </TableCell>
       </TableRow>
     </>
   );
 }
 
-export default TransitionsModal;
+const mapDispatchToProps = {
+  deletePost: postsActions.deletePost,
+  allPosts: postsActions.allPosts,
+};
+
+export default connect(null, mapDispatchToProps)(TransitionsModal);

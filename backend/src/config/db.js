@@ -10,6 +10,10 @@ const sequelize = new Sequelize(process.env.DB,
     dialect: process.env.DIALECT,
   });
 
+sequelize.sync({force: true})
+.then(()=>{
+  console.log('sync table finished')
+})
 const Post = PostModel(sequelize, Sequelize);
 module.exports = {
   Post,
