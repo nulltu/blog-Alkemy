@@ -33,3 +33,7 @@ textarea:focus{
 #button__publish:hover{
     background-color: #3f51b5;
 }
+
+.home__icon{
+    width: 3rem;
+}

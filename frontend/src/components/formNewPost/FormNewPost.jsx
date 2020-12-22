@@ -6,9 +6,11 @@ import Typography from '@material-ui/core/Typography';
 import { makeStyles } from '@material-ui/core/styles';
 import Container from '@material-ui/core/Container';
 import Swal from 'sweetalert2';
+import { Link } from 'react-router-dom';
 
 import React, { useState, useEffect } from 'react';
 import { connect } from 'react-redux';
+import home from '../../assets/icons/home.svg';
 import { RESOK, CREATED } from '../../constants/constants';
 import './formNewPost.css';
 import postsActions from '../../redux/actions/postsActions';
@@ -110,7 +112,10 @@ const FormNewPost = (props) => {
             Publish
           </Button>
         </form>
+        <div />
+        <Link to="/"><img className="home__icon" src={home} alt="" /></Link>
       </div>
+
     </Container>
   );
 };

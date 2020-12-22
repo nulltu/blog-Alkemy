@@ -1,4 +1,3 @@
-/* eslint-disable arrow-parens */
 const initialState = {
   listPosts: [],
 };
