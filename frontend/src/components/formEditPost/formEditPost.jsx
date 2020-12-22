@@ -1,3 +1,6 @@
+/* eslint-disable react/prop-types */
+/* eslint-disable jsx-a11y/label-has-associated-control */
+/* eslint-disable no-use-before-define */
 import Button from '@material-ui/core/Button';
 import CssBaseline from '@material-ui/core/CssBaseline';
 import TextField from '@material-ui/core/TextField';
@@ -5,51 +8,66 @@ import Grid from '@material-ui/core/Grid';
 import Typography from '@material-ui/core/Typography';
 import { makeStyles } from '@material-ui/core/styles';
 import Container from '@material-ui/core/Container';
-import Swal from 'sweetalert2'
+import Swal from 'sweetalert2';
 
-import React, { useState } from 'react';
-import { CREATED, URLAPI } from '../../constants'
-import axios from 'axios'
-import './formNewPost.css'
+import React, { useState, useEffect } from 'react';
+import axios from 'axios';
+import { RESOK, URLAPI } from '../../constants/constants';
+import './formEditPost.css';
 
-export default function FormNewPost(props) {
+export default function FormEditPost(props) {
+  const [postGetById, setPostGetById] = useState({
+    title: '', body: '',
+  });
 
-  const [dataPost, setDataPost] = useState({
-    username: '', title: '', body: ''
-  })
+  // eslint-disable-next-line react/destructuring-assignment
+  const dataProps = props.props;
 
-  const readInput = e => {
-    const textBox = e.target.name
-    const value = e.target.value
-    setDataPost({
-      ...dataPost,
-      [textBox]: value
-    })
-  }
+  const paramsId = dataProps.match.params.id;
 
-  const postNewPost = async () => {
-    const response = await axios.post(URLAPI, dataPost)
-    if (response.status === CREATED) {
+  const readInput = (e) => {
+    const textBox = e.target.name;
+    const { value } = e.target;
+    setPostGetById({
+      ...setPostGetById,
+      [textBox]: value,
+    });
+  };
+
+  const getPostById = async () => {
+    const response = await axios.get(`${URLAPI}${paramsId}`);
+    const dataPostById = response.data;
+    setPostGetById({
+      title: dataPostById.title,
+      body: dataPostById.body,
+      id: dataPostById.id,
+    });
+  };
+
+  useEffect(() => {
+    getPostById();
+  }, []);
+
+  const updatePost = async () => {
+    const response = await axios.put(URLAPI + paramsId, postGetById);
+    if (response.status === RESOK) {
       Swal.fire(
-        'Post created successfully!'
-      )
-      setDataPost({
-        username: '',
-        title: '',
-        body: ''
-      })
+        'Post edited successfully!',
+      );
+      setTimeout(() => {
+        props.props.history.push('/newOperation');
+      }, 1000);
     }
-  }
+  };
 
-  const createNewPost = (e) => {
+  const editPost = (e) => {
     e.preventDefault();
-    if (dataPost.title === "" || dataPost.body === "") {
-      Swal.fire('The input field cannot be empty.')
+    if (postGetById.title === '' || postGetById.body === '') {
+      Swal.fire('The input field cannot be empty.');
     } else {
-      postNewPost()
+      updatePost();
     }
-
-  }
+  };
 
   const classes = useStyles();
   return (
@@ -57,24 +75,24 @@ export default function FormNewPost(props) {
       <CssBaseline />
       <div className={classes.paper}>
         <Typography component="h1" variant="h5">
-          Create New Post
+          Edit Post #
+          {postGetById.id}
         </Typography>
         <form className={classes.form} noValidate>
           <Grid container spacing={2}>
             <Grid item xs={12} sm={12}>
+              <label className={classes.title}>Title</label>
               <TextField
                 multiline
                 name="title"
-                onChange={readInput}
                 autoComplete="fname"
                 variant="outlined"
                 required
                 fullWidth
-                id="firstName"
-                label="Title"
                 autoFocus
                 className={classes.input}
-                value={dataPost.title}
+                value={(postGetById.title)}
+                onChange={readInput}
               />
             </Grid>
 
@@ -83,8 +101,8 @@ export default function FormNewPost(props) {
                 name="body"
                 placeholder="Post"
                 onChange={readInput}
-                value={dataPost.body}
-              ></textarea>
+                value={postGetById.body}
+              />
             </Grid>
           </Grid>
           <Button
@@ -94,9 +112,9 @@ export default function FormNewPost(props) {
             variant="contained"
             color="primary"
             className={classes.submit}
-            onClick={createNewPost}
+            onClick={editPost}
           >
-            Publish
+            Confirm
           </Button>
         </form>
       </div>
@@ -121,9 +139,12 @@ const useStyles = makeStyles((theme) => ({
   },
   submit: {
     margin: theme.spacing(3, 0, 2),
-    backgroundColor: '#f5b630'
+    backgroundColor: '#F5B427',
   },
   input: {
-    color: 'red'
-  }
+    color: 'red',
+  },
+  title: {
+    fontSize: '1.2rem',
+  },
 }));
