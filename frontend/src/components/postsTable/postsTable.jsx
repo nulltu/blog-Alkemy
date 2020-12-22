@@ -22,7 +22,7 @@ function PostsTable(props) {
 
   return (
     <div className="container__table__posts">
-      {!props.listPosts
+      {props.listPosts === undefined
         ? <LinearProgress style={{ color: 'secondary' }} />
         : (
           <TableContainer component={Paper}>

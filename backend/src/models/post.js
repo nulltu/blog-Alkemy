@@ -13,7 +13,7 @@ module.exports = (sequelize, type) => sequelize.define('post', {
   userId: {
     type: type.STRING,
   },
-  category: {
+  image: {
     type: type.STRING,
   },
 });

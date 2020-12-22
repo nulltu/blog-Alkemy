@@ -42,7 +42,7 @@ const useStyles = makeStyles((theme) => ({
 
 export default function FormEditPost(props) {
   const [postGetById, setPostGetById] = useState({
-    title: '', body: '',
+    title: '', body: '', image: '',
   });
 
   // eslint-disable-next-line react/destructuring-assignment
@@ -65,6 +65,7 @@ export default function FormEditPost(props) {
     setPostGetById({
       title: dataPostById.title,
       body: dataPostById.body,
+      image: dataPostById.image,
       id: dataPostById.id,
     });
   };
@@ -118,6 +119,22 @@ export default function FormEditPost(props) {
                 className={classes.input}
                 value={(postGetById.title)}
                 onChange={readInput}
+              />
+            </Grid>
+            <Grid item xs={12} sm={12}>
+              <TextField
+                multiline
+                name="image"
+                onChange={readInput}
+                autoComplete="fname"
+                variant="outlined"
+                required
+                fullWidth
+                id="image"
+                label="url image"
+                autoFocus
+                className={classes.input}
+                value={postGetById.image}
               />
             </Grid>
 

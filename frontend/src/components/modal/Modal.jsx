@@ -30,6 +30,9 @@ const useStyles = makeStyles((theme) => ({
     margin: '0rem 1rem',
     textTransform: 'lowercase',
   },
+  image: {
+    width: '40vw',
+  },
 
 }));
 
@@ -88,6 +91,7 @@ export default function TransitionsModal(props) {
                   </p>
                   <h2 id="transition-modal-title">{postId.title}</h2>
                   <p id="transition-modal-description">{postId.body}</p>
+                  <img className={classes.image} src={postId.image} alt="" />
                 </div>
               </Fade>
             </Modal>

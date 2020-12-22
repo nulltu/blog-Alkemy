@@ -28,7 +28,10 @@ const postsActions = {
     });
     return response;
   },
-
+  updatePost: (idPost, dataPost) => async (dispatch, getState) => {
+    const response = await axios.put(URLAPI + idPost + dataPost);
+    return response;
+  },
   randomUser: () => async (dispatch) => {
     const response = await axios.get('https://randomuser.me/api/');
     const randomUser = response.data.results[0].name.first;

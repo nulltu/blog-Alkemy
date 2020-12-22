@@ -17,7 +17,7 @@ import postsActions from '../../redux/actions/postsActions';
 
 const FormNewPost = (props) => {
   const [dataPost, setDataPost] = useState({
-    title: '', body: '', userId: '',
+    title: '', body: '', userId: '', image: '',
   });
 
   const readInput = (e) => {
@@ -39,6 +39,7 @@ const FormNewPost = (props) => {
         title: '',
         body: '',
         userId: '',
+        image: '',
       });
     }
   };
@@ -54,9 +55,10 @@ const FormNewPost = (props) => {
     getRandomUser();
   }, []);
 
+  console.log(dataPost);
   const createNewPost = (e) => {
     e.preventDefault();
-    if (dataPost.title === '' || dataPost.body === '') {
+    if (dataPost.title === '' || dataPost.body === '' || dataPost.image === '') {
       Swal.fire('The input field cannot be empty.');
     } else {
       postNewPost();
@@ -90,7 +92,22 @@ const FormNewPost = (props) => {
                 value={dataPost.title}
               />
             </Grid>
-
+            <Grid item xs={12} sm={12}>
+              <TextField
+                multiline
+                name="image"
+                onChange={readInput}
+                autoComplete="fname"
+                variant="outlined"
+                required
+                fullWidth
+                id="image"
+                label="url image"
+                autoFocus
+                className={classes.input}
+                value={dataPost.image}
+              />
+            </Grid>
             <Grid item xs={12}>
               <textarea
                 name="body"
