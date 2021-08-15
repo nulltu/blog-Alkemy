@@ -17,7 +17,9 @@ const postsReducer = (state = initialState, action) => {
     case 'DELETE_POST':
       return {
         ...state,
-        listPosts: state.listPosts.filter((item, index) => index !== action.payload),
+        listPosts: state.listPosts.filter(
+          (item, index) => index !== action.payload,
+        ),
       };
     default:
       return state;

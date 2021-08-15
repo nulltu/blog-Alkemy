@@ -1,53 +1,50 @@
-.container__table__posts{
-    margin: 3vw 20vw;
+.container__table__posts {
+  margin: 3vw 20vw;
 }
 
-.links__crud{
-    display: flex!important;
+.links__crud {
+  display: flex !important;
 }
 
-.links__crud img{
-    width: 1.5rem;
-    margin: 0rem 1rem;
+.links__crud img {
+  width: 1.5rem;
+  margin: 0rem 1rem;
 }
 
-.MuiTableCell-root.MuiTableCell-head{
-    font-weight: bold;
-    font-size: 1.2rem;
+.MuiTableCell-root.MuiTableCell-head {
+  font-weight: bold;
+  font-size: 1.2rem;
 }
 
-.MuiTable-root{
-    background-color: rgba(245, 180, 39, 0.8);
+.MuiTable-root {
+  background-color: rgba(245, 180, 39, 0.8);
 }
 
-
-.MuiTableCell-root.MuiTableCell-body{
-    text-align: center;
-    font-family: 'Rubik', sans-serif;
-}   
+.MuiTableCell-root.MuiTableCell-body {
+  text-align: center;
+  font-family: 'Rubik', sans-serif;
+}
 
 @media only screen and (max-width: 992px) {
-    .container__table__posts{
-        margin: 0vw;
-    }     
-    
-    .MuiTableCell-root.MuiTableCell-head{
-        font-size: 1rem;
-    }
+  .container__table__posts {
+    margin: 0vw;
+  }
 
-    .MuiTableCell-root.MuiTableCell-body{
-        font-size: 1rem;
-    }
+  .MuiTableCell-root.MuiTableCell-head {
+    font-size: 1rem;
+  }
 
-    .links__crud img{
-        margin: .5rem;
-    }
+  .MuiTableCell-root.MuiTableCell-body {
+    font-size: 1rem;
+  }
+
+  .links__crud img {
+    margin: 0.5rem;
+  }
 }
 
 @media only screen and (max-width: 600px) {
-    
-    .links__crud{
-        flex-direction: column;
-    }
-
-    }   
+  .links__crud {
+    flex-direction: column;
+  }
+}

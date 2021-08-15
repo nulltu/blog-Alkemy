@@ -42,7 +42,9 @@ const useStyles = makeStyles((theme) => ({
 
 export default function FormEditPost(props) {
   const [postGetById, setPostGetById] = useState({
-    title: '', body: '', image: '',
+    title: '',
+    body: '',
+    image: '',
   });
 
   // eslint-disable-next-line react/destructuring-assignment
@@ -77,9 +79,7 @@ export default function FormEditPost(props) {
   const updatePost = async () => {
     const response = await axios.put(URLAPI + paramsId, postGetById);
     if (response.status === RESOK) {
-      Swal.fire(
-        'Post edited successfully!',
-      );
+      Swal.fire('Post edited successfully!');
       setTimeout(() => {
         props.props.history.push('/newOperation');
       }, 1000);
@@ -101,8 +101,7 @@ export default function FormEditPost(props) {
       <CssBaseline />
       <div className={classes.paper}>
         <Typography component="h1" variant="h5">
-          Edit Post #
-          {postGetById.id}
+          Edit Post #{postGetById.id}
         </Typography>
         <form className={classes.form} noValidate>
           <Grid container spacing={2}>
@@ -117,7 +116,7 @@ export default function FormEditPost(props) {
                 fullWidth
                 autoFocus
                 className={classes.input}
-                value={(postGetById.title)}
+                value={postGetById.title}
                 onChange={readInput}
               />
             </Grid>

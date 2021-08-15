@@ -17,7 +17,10 @@ import postsActions from '../../redux/actions/postsActions';
 
 const FormNewPost = (props) => {
   const [dataPost, setDataPost] = useState({
-    title: '', body: '', userId: '', image: '',
+    title: '',
+    body: '',
+    userId: '',
+    image: '',
   });
 
   const readInput = (e) => {
@@ -32,9 +35,7 @@ const FormNewPost = (props) => {
   const postNewPost = async () => {
     const response = await props.createPost(dataPost);
     if (response.status === RESOK || response.status === CREATED) {
-      Swal.fire(
-        'Post created successfully!',
-      );
+      Swal.fire('Post created successfully!');
       setDataPost({
         title: '',
         body: '',
@@ -55,10 +56,13 @@ const FormNewPost = (props) => {
     getRandomUser();
   }, []);
 
-  console.log(dataPost);
   const createNewPost = (e) => {
     e.preventDefault();
-    if (dataPost.title === '' || dataPost.body === '' || dataPost.image === '') {
+    if (
+      dataPost.title === '' ||
+      dataPost.body === '' ||
+      dataPost.image === ''
+    ) {
       Swal.fire('The input field cannot be empty.');
     } else {
       postNewPost();
@@ -130,9 +134,10 @@ const FormNewPost = (props) => {
           </Button>
         </form>
         <div />
-        <Link to="/"><img className="home__icon" src={home} alt="" /></Link>
+        <Link to="/">
+          <img className="home__icon" src={home} alt="" />
+        </Link>
       </div>
-
     </Container>
   );
 };

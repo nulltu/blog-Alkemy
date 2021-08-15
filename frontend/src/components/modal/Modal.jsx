@@ -33,7 +33,6 @@ const useStyles = makeStyles((theme) => ({
   image: {
     width: '40vw',
   },
-
 }));
 
 export default function TransitionsModal(props) {
@@ -64,39 +63,39 @@ export default function TransitionsModal(props) {
 
   return (
     <>
-      {postId === undefined
-        ? <CircularProgress />
-        : (
-          <div>
-            <Button type="button" onClick={handleOpen} className={classes.button}>
-              Detail
-            </Button>
-            <Modal
-              aria-labelledby="transition-modal-title"
-              aria-describedby="transition-modal-description"
-              className={classes.modal}
-              open={open}
-              onClose={handleClose}
-              closeAfterTransition
-              BackdropComponent={Backdrop}
-              BackdropProps={{
-                timeout: 500,
-              }}
-            >
-              <Fade in={open}>
-                <div className={classes.paper}>
-                  <p id="transition-modal-description">
-                    #User:
-                    {postId.userId}
-                  </p>
-                  <h2 id="transition-modal-title">{postId.title}</h2>
-                  <p id="transition-modal-description">{postId.body}</p>
-                  <img className={classes.image} src={postId.image} alt="" />
-                </div>
-              </Fade>
-            </Modal>
-          </div>
-        )}
+      {postId === undefined ? (
+        <CircularProgress />
+      ) : (
+        <div>
+          <Button type="button" onClick={handleOpen} className={classes.button}>
+            Detail
+          </Button>
+          <Modal
+            aria-labelledby="transition-modal-title"
+            aria-describedby="transition-modal-description"
+            className={classes.modal}
+            open={open}
+            onClose={handleClose}
+            closeAfterTransition
+            BackdropComponent={Backdrop}
+            BackdropProps={{
+              timeout: 500,
+            }}
+          >
+            <Fade in={open}>
+              <div className={classes.paper}>
+                <p id="transition-modal-description">
+                  #User:
+                  {postId.userId}
+                </p>
+                <h2 id="transition-modal-title">{postId.title}</h2>
+                <p id="transition-modal-description">{postId.body}</p>
+                <img className={classes.image} src={postId.image} alt="" />
+              </div>
+            </Fade>
+          </Modal>
+        </div>
+      )}
     </>
   );
 }

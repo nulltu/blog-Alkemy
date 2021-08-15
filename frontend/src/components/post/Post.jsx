@@ -34,11 +34,7 @@ function TransitionsModal(props) {
     }).then((result) => {
       if (result.isConfirmed) {
         deletePost();
-        Swal.fire(
-          'Deleted!',
-          'Your file has been deleted.',
-          'success',
-        );
+        Swal.fire('Deleted!', 'Your file has been deleted.', 'success');
       }
     });
   };
@@ -54,8 +50,17 @@ function TransitionsModal(props) {
         </TableCell>
         <TableCell className="links__crud">
           <Modal idPost={props.post.id} />
-          <Link to={`/editPost/${props.post.id}`}><img src={edit} alt="" /></Link>
-          <Link><img src={remove} onClick={removePost} onKeyDown={removePost} alt="" /></Link>
+          <Link to={`/editPost/${props.post.id}`}>
+            <img src={edit} alt="" />
+          </Link>
+          <Link>
+            <img
+              src={remove}
+              onClick={removePost}
+              onKeyDown={removePost}
+              alt=""
+            />
+          </Link>
         </TableCell>
       </TableRow>
     </>

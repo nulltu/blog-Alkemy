@@ -22,39 +22,33 @@ function PostsTable(props) {
 
   return (
     <div className="container__table__posts">
-      {props.listPosts === undefined
-        ? <LinearProgress style={{ color: 'secondary' }} />
-        : (
-          <TableContainer component={Paper}>
-            <Table aria-label="simple table">
-              <TableHead>
-                <TableRow>
-                  <TableCell>
-                    #
-                  </TableCell>
-                  <TableCell>
-                    Title
-                  </TableCell>
-                  <TableCell>
-                    Details
-                  </TableCell>
-                </TableRow>
-              </TableHead>
-              <TableBody>
-                {props.listPosts.map((post) => (
-                  <Post post={post} />
-                ))}
-              </TableBody>
-            </Table>
-          </TableContainer>
-        )}
+      {props.listPosts === undefined ? (
+        <LinearProgress style={{ color: 'secondary' }} />
+      ) : (
+        <TableContainer component={Paper}>
+          <Table aria-label="simple table">
+            <TableHead>
+              <TableRow>
+                <TableCell>#</TableCell>
+                <TableCell>Title</TableCell>
+                <TableCell>Details</TableCell>
+              </TableRow>
+            </TableHead>
+            <TableBody>
+              {props.listPosts.map((post) => (
+                <Post post={post} />
+              ))}
+            </TableBody>
+          </Table>
+        </TableContainer>
+      )}
     </div>
   );
 }
 
 const mapStateToProps = (state) => {
   return {
-      listPosts: state.posts.listPosts,
+    listPosts: state.posts.listPosts,
   };
 };
 
