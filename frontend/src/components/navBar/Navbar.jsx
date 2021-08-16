@@ -6,7 +6,7 @@ function NavBar() {
   return (
     <div>
       <nav>
-        <h2>After-Coder</h2>
+        <h2 className="logo">After-Coder</h2>
         <Link className="link__nav" to="/">
           Home
         </Link>

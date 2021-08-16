@@ -3,16 +3,20 @@ nav {
   justify-content: space-around;
   align-items: center;
   padding: 1rem;
-  background-color: #f5b630;
+  background-color: #302d28;
+}
+
+.logo {
+  color: whitesmoke;
 }
 
 .link__nav {
-  color: #3f51b5;
+  color: #dbdde6;
   text-decoration: none;
   margin: 1rem;
   font-size: 1.2rem;
   font-weight: 600;
-  background-image: linear-gradient(#3f51b5, #3f51b5);
+  background-image: linear-gradient(#acaebb, #c5c8d8);
   background-position: 0% 100%;
   background-repeat: no-repeat;
   background-size: 0% 2px;
@@ -20,7 +24,7 @@ nav {
 }
 
 .link__nav:hover {
-  color: #3f51b5;
+  color: #dcdfec;
   background-size: 100% 3px;
   font-family: 'Rubik', sans-serif;
 }
