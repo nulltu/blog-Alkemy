@@ -59,16 +59,15 @@ const FormNewPost = (props) => {
   const createNewPost = (e) => {
     e.preventDefault();
     if (
-      dataPost.title === '' ||
-      dataPost.body === '' ||
-      dataPost.image === ''
+      dataPost.title === ''
+      || dataPost.body === ''
+      || dataPost.image === ''
     ) {
       Swal.fire('The input field cannot be empty.');
     } else {
       postNewPost();
     }
   };
-
   // eslint-disable-next-line no-use-before-define
   const classes = useStyles();
   return (

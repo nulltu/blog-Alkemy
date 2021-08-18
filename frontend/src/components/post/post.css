@@ -16,13 +16,19 @@
   font-size: 1.2rem;
 }
 
+.MuiTableCell-root{
+  border-bottom: rgba(71, 74, 75, 0.8) !important;
+}
+
+
 .MuiTable-root {
-  background-color: rgba(245, 180, 39, 0.8);
+  background-color: rgba(71, 74, 75, 0.8);
 }
 
 .MuiTableCell-root.MuiTableCell-body {
   text-align: center;
   font-family: 'Rubik', sans-serif;
+  color: whitesmoke;
 }
 
 @media only screen and (max-width: 992px) {

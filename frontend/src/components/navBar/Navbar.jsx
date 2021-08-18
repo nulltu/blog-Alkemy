@@ -1,5 +1,6 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
+import add from '../../assets/icons/add.svg';
 import './navBar.css';
 
 function NavBar() {
@@ -10,8 +11,8 @@ function NavBar() {
         <Link className="link__nav" to="/">
           Home
         </Link>
-        <Link className="link__nav" to="/newPost">
-          New Post
+        <Link className="new-post" to="/newPost">
+          <img src={add} alt="" />
         </Link>
       </nav>
     </div>

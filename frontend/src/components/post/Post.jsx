@@ -43,9 +43,6 @@ function TransitionsModal(props) {
     <>
       <TableRow key={props.post.id}>
         <TableCell component="th" scope="row">
-          {props.post.id}
-        </TableCell>
-        <TableCell component="th" scope="row">
           {props.post.title}
         </TableCell>
         <TableCell className="links__crud">

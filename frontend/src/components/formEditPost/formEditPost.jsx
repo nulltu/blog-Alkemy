@@ -101,7 +101,8 @@ export default function FormEditPost(props) {
       <CssBaseline />
       <div className={classes.paper}>
         <Typography component="h1" variant="h5">
-          Edit Post #{postGetById.id}
+          Edit Post #
+          {postGetById.id}
         </Typography>
         <form className={classes.form} noValidate>
           <Grid container spacing={2}>

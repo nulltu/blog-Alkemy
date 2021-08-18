@@ -1,5 +1,7 @@
 import React from 'react';
-import { BrowserRouter, Switch, Route, Redirect } from 'react-router-dom';
+import {
+  BrowserRouter, Switch, Route, Redirect,
+} from 'react-router-dom';
 import Home from '../pages/Home';
 import NavBar from '../components/navBar/Navbar';
 import NewPost from '../pages/NewPost';
